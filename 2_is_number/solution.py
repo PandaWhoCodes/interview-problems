@@ -12,29 +12,10 @@ invalid numbers
 "1e1.2" # Exponent can only be an integer (positive or negative or 0)
 
 """
-from collections import defaultdict
-def is_number(num):
-    allowed = ("-",".","e","1","2","3","4","5","6","7","8","9","0")
-    freq = defaultdict(int)
-    exponent = False
-    num = str(num).lower()
-    if "-" in num and "e" not in num and num[0] != "-":
-        return False
+import re
 
-    for char in num:
-        freq[char] += 1
-        if char == "e":
-            exponent = True
-        if char not in allowed:
-            return False
-        elif exponent and char == "-" and freq[char]>2:
-            return False
-        elif  char== "." and freq[char]>1:
-            return False
-        elif char =="." and exponent:
-            return False
-    return True
-
+def is_number(st):
+    return True if re.fullmatch(r'-?[0-9]+\.?[0-9]*(?:[Ee]\ *-?\ *[0-9]+\.?[0-9])|-?\d+\.\d+|-?\b\d+\b', str(st)) else False
 
 if __name__ == "__main__":
     print(is_number(-123))
