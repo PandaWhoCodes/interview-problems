@@ -1,19 +1,11 @@
-def pascal_triangle_row(n):
-    triangle = [[1] * i for i in range(1, n + 1)]
-    for i in range(1,n):
-        for j in range(1,i):
-            triangle[i][j] = triangle[i-1][j-1] + triangle[i-1][j]
-    return triangle
+def pascal_row(prev=None):
+  return [1] + [prev[i]+prev[i+1] for i in range(len(prev)-1)] + [1] if prev or prev == [] else [1]
 
 
 if __name__ == "__main__":
-    triangle = pascal_triangle_row(6)
-    # print the triangle properly
-    # padding = len(triangle[-1]) -1
-    # for row in triangle:
-    #     print(" "*padding + ' '.join(str(x) for x in row))
-    #     padding -= 1
-    
-    # print the last line as per the problem
-    print(*triangle[-1])
+    n = int(input())
+    row = []
+    for x in range(n):
+        row = pascal_row(row)
+        print(*row)
 
