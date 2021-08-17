@@ -4,17 +4,17 @@ def rotate_circle(mat, n, circle_no=1):
     temp = mat[start][start]
     for i in range(start, end+1):
         for j in range(start + 1, end+1):
-            if i == start:
+            if i == start or j == end:
                 temp, mat[i][j] = mat[i][j], temp
                 # mat[i][j] = temp
-            elif j == end:
-                temp, mat[i][j] = mat[i][j], temp
+            # elif j == end:
+            #     temp, mat[i][j] = mat[i][j], temp
     for i in range(end, start-1, -1):
         for j in range(end-1, start-1, -1):
-            if i == end:
+            if i == end or j == start:
                 mat[i][j], temp = temp, mat[i][j]
-            elif j == start:
-                mat[i][j], temp = temp, mat[i][j]
+            # elif j == start:
+            #     mat[i][j], temp = temp, mat[i][j]
     print(*[x for x in mat], sep="\n")
         
                 
