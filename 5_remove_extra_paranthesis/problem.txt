@@ -1,0 +1,5 @@
+given equation (ab))cd
+
+remove invalid paranthesis:
+
+(ab)cd
